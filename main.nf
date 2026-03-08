@@ -1,6 +1,6 @@
 /*
  * DSL2 pipeline: FASTQ → FastQC → BWA-MEM → SAMtools sort/index → MultiQC
- * Interview-style bioinformatics pipeline using nf-core test data.
+ * Bioinformatics pipeline using nf-core test data.
  */
 
 // -------------------------------------------------------------------------

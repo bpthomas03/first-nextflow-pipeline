@@ -63,7 +63,7 @@ Requires Nextflow and Docker (or Singularity) for the full test run; workflow-on
 - `nextflow.config` — Docker, publishDir
 - `modules/main.nf` — processes: FASTQC, BWA_INDEX, BWA_MEM, SAMTOOLS_SORT, MULTIQC
 
-## Concepts (for interview)
+## Concepts
 
 - **Channels:** `fromFilePairs` for paired reads, `fromPath` for reference; processes consume from channels asynchronously.
 - **Processes:** Input/output declarations; `container` for reproducibility; `publishDir` in config.

@@ -35,6 +35,28 @@ nextflow run main.nf -resume
 
 Outputs go to `results/` (or `--outdir`): `fastqc/`, `alignments/`, `multiqc/`.
 
+## Tests
+
+Unit/integration tests (per-process output checks + workflow dry-run) use pytest. The test run executes the pipeline once with `-profile test` (output to `tests/results/`), then asserts on each process’s outputs.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate   # On Windows Git Bash: .venv/Scripts/activate
+pip install -r requirements-test.txt
+pytest tests/ -v
+```
+
+Quick check (no pipeline run, only file structure + `nextflow inspect`):
+
+```bash
+pytest tests/test_workflow.py -v
+```
+
+- **Workflow:** `test_workflow.py` — checks `main.nf`/`modules/main.nf`/config exist and `nextflow inspect main.nf` succeeds.
+- **Processes:** `test_fastqc.py`, `test_bwa_index.py`, `test_bwa_mem.py`, `test_samtools_sort.py`, `test_multiqc.py` — assert expected files/dirs exist after a run.
+
+Requires Nextflow and Docker (or Singularity) for the full test run; workflow-only tests (`pytest tests/test_workflow.py`) skip if `nextflow` is not on PATH.
+
 ## Structure
 
 - `main.nf` — params, includes, workflow

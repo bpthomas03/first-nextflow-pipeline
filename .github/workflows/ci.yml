@@ -1,0 +1,48 @@
+# Run tests on every push and on pull requests.
+# "Pull request" = when you open/update a PR to merge a branch into main;
+# we also run on push so any push to main (or the branch) triggers checks.
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Install Nextflow
+        uses: nf-core/setup-nextflow@v3
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r requirements-test.txt
+
+      - name: Run pipeline (test profile)
+        run: |
+          nextflow run main.nf -profile test -resume
+        env:
+          NXF_ANSI_LOG: "false"
+
+      - name: Run tests
+        run: |
+          .venv/bin/pytest tests/ -v --tb=short

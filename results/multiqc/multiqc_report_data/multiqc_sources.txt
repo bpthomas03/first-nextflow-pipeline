@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	SRR11140750_R2	/home/bpthomas/hello-nextflow/work/2e/293d6fb0696b6d4af865e975d882fe/fastqc_SRR11140750/SRR11140750_R2_fastqc/fastqc_data.txt
+FastQC	all_sections	SRR11140750_R1	/home/bpthomas/hello-nextflow/work/2e/293d6fb0696b6d4af865e975d882fe/fastqc_SRR11140750/SRR11140750_R1_fastqc/fastqc_data.txt
+FastQC	all_sections	SRR11140748_R1	/home/bpthomas/hello-nextflow/work/2e/293d6fb0696b6d4af865e975d882fe/fastqc_SRR11140748/SRR11140748_R1_fastqc/fastqc_data.txt
+FastQC	all_sections	SRR11140748_R2	/home/bpthomas/hello-nextflow/work/2e/293d6fb0696b6d4af865e975d882fe/fastqc_SRR11140748/SRR11140748_R2_fastqc/fastqc_data.txt

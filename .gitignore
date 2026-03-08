@@ -1,0 +1,23 @@
+# Nextflow
+work/
+.nextflow/
+.nextflow.log*
+*.log
+
+# Optional: uncomment to ignore published results (they can be re-generated)
+# results/
+
+# Data (often large; keep if small test data)
+# data/*.fastq.gz
+# data/*.fna
+# data/*.fasta
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/

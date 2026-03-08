@@ -57,6 +57,10 @@ pytest tests/test_workflow.py -v
 
 Requires Nextflow and Docker (or Singularity) for the full test run; workflow-only tests (`pytest tests/test_workflow.py`) skip if `nextflow` is not on PATH.
 
+## CI (GitHub Actions)
+
+On every **push** to `main`/`master` and on every **pull request** targeting those branches, GitHub Actions runs the test suite in `.github/workflows/ci.yml`: it downloads the minimal test data, runs the pipeline with `-profile test`, then runs pytest. You can see runs under the repo’s **Actions** tab. A pull request is a request to merge a branch into another (e.g. your branch into `main`); CI runs on both the push that updates the branch and when the PR is opened/updated, so the code is checked before merge.
+
 ## Structure
 
 - `main.nf` — params, includes, workflow
